@@ -1,0 +1,313 @@
+{
+    "ClientConfiguration": {
+        "ConfigurationName": "Конфигурация для птичек",
+        "ConfigurationDescription": "Разработка конфигурации для птичек в SimpleUI",
+        "ConfigurationVersion": "0.0.1",
+        "Processes": [
+            {
+                "type": "Process",
+                "ProcessName": "Птицы",
+                "PlanFactHeader": "План-факт",
+                "DefineOnBackPressed": true,
+                "hidden": false,
+                "login_screen": false,
+                "SC": false,
+                "Operations": [
+                    {
+                        "type": "Operation",
+                        "Name": "Меню",
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "noConfirmation": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "send_when_opened": false,
+                        "onlineOnInput": false,
+                        "DefOnlineOnCreate": "",
+                        "DefOnlineOnInput": "",
+                        "DefOnCreate": "menu_on_start",
+                        "DefOnInput": "menu_on_input",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "CButtons",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Список;Создание",
+                                        "Variable": "menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "Создание новой птицы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Название птицы",
+                                        "Variable": "",
+                                        "BackgroundColor": "grey"
+                                    },
+                                    {
+                                        "type": "EditTextText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "name_bird"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Цвет птицы",
+                                        "Variable": "",
+                                        "BackgroundColor": "grey"
+                                    },
+                                    {
+                                        "type": "EditTextText",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "color_bird"
+                                    },
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "сохранить",
+                                        "Variable": "save_bird"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "@saved_bird",
+                                        "Variable": "saved_bird"
+                                    },
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Удалить все",
+                                        "Variable": "del_all"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "create_on_input",
+                        "DefOnCreate": "create_on_start",
+                        "DefOnlineOnCreate": ""
+                    },
+                    {
+                        "Name": "Карточка птицы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "wrap_content",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "LinearLayout",
+                                                "height": "wrap_content",
+                                                "width": "wrap_content",
+                                                "weight": "0",
+                                                "Value": "",
+                                                "Variable": "",
+                                                "orientation": "vertical",
+                                                "Elements": [
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "0",
+                                                        "Value": "id:",
+                                                        "Variable": ""
+                                                    },
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "0",
+                                                        "Value": "@selected_card_key",
+                                                        "Variable": ""
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "LinearLayout",
+                                                "height": "wrap_content",
+                                                "width": "wrap_content",
+                                                "weight": "0",
+                                                "Value": "",
+                                                "Variable": "",
+                                                "orientation": "vertical",
+                                                "Elements": [
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "0",
+                                                        "Value": "Название",
+                                                        "Variable": ""
+                                                    },
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "0",
+                                                        "Value": "@bird_name",
+                                                        "Variable": ""
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "type": "LinearLayout",
+                                                "height": "wrap_content",
+                                                "width": "wrap_content",
+                                                "weight": "0",
+                                                "Value": "",
+                                                "Variable": "",
+                                                "orientation": "vertical",
+                                                "Elements": [
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "0",
+                                                        "Value": "Цвет",
+                                                        "Variable": ""
+                                                    },
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "0",
+                                                        "Value": "@bird_color",
+                                                        "Variable": ""
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnInput": "card_on_input",
+                        "DefOnCreate": "card_on_start"
+                    },
+                    {
+                        "Name": "Список птиц",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "Button",
+                                        "height": "wrap_content",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Добавить птицу",
+                                        "Variable": "create_new"
+                                    },
+                                    {
+                                        "type": "CardsLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "@cards",
+                                        "Variable": "res"
+                                    }
+                                ]
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnInput": false,
+                        "DefOnlineOnCreate": "",
+                        "DefOnCreate": "list_on_start",
+                        "DefOnInput": "list_on_touch"
+                    }
+                ]
+            }
+        ],
+        "ConfigurationSettings": {
+            "uid": "41326a68f830438281eb8c039b871e90",
+            "vendor": ""
+        },
+        "ConfigurationTags": "Py,off-line",
+        "PyFiles": [],
+        "RunPython": true,
+        "PyHandlers": "aW1wb3J0IGpzb24KZnJvbSBydS50cmF2ZWxmb29kLnNpbXBsZV91aSBpbXBvcnQgTm9TUUwgYXMgbm9DbGFzcwpmcm9tIGphdmEgaW1wb3J0IGpjbGFzcwoKI9GN0YLQviDQtNC70Y8g0L3QsNGC0LjQstC90L7Qs9C+INGC0L7RgdGC0LAKZnJvbSBhbmRyb2lkLndpZGdldCBpbXBvcnQgVG9hc3QKZnJvbSBjb20uY2hhcXVvLnB5dGhvbiBpbXBvcnQgUHl0aG9uCgpkZWYgbWVudV9vbl9pbnB1dChoYXNoTWFwLF9maWxlcz1Ob25lLF9kYXRhPU5vbmUpOgogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIik9PSJtZW51IjoKICAgICAgICBpZiBoYXNoTWFwLmdldCgibWVudSIpPT0i0KHQv9C40YHQvtC6IjoKICAgICAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCLQodC/0LjRgdC+0Log0L/RgtC40YYiKSAgICAgICAgCiAgICAgICAgZWxpZiBoYXNoTWFwLmdldCgibWVudSIpPT0i0KHQvtC30LTQsNC90LjQtSI6CiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJTaG93U2NyZWVuIiwi0KHQvtC30LTQsNC90LjQtSDQvdC+0LLQvtC5INC/0YLQuNGG0YsiKSAgICAKICAgIGVsaWYgIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpPT0nT05fQkFDS19QUkVTU0VEJzogCiAgICAgICAgICAgIGhhc2hNYXAucHV0KCJGaW5pc2hQcm9jZXNzIiwiIikgICAgIAogICAgcmV0dXJuIGhhc2hNYXAKCmRlZiBtZW51X29uX3N0YXJ0KGhhc2hNYXAsX2ZpbGVzPU5vbmUsX2RhdGE9Tm9uZSk6CiAgICAjaGFzaE1hcC5wdXQoImdldGZpbGVzIiwiIikgCiAgICAjaGFzaE1hcC5wdXQoInRvYXN0IiwidGVzdDEiKSAgICAKICAgIHJldHVybiBoYXNoTWFwCgpkZWYgY3JlYXRlX29uX3N0YXJ0KGhhc2hNYXAsX2ZpbGVzPU5vbmUsX2RhdGE9Tm9uZSk6CiAgICBpZiBub3QgaGFzaE1hcC5jb250YWluc0tleSgic2F2ZWRfYmlyZCIpOgogICAgICAgIGhhc2hNYXAucHV0KCJzYXZlZF9iaXJkIiwiIikKICAgIHJldHVybiBoYXNoTWFwCgpkZWYgY3JlYXRlX29uX2lucHV0KGhhc2hNYXAsX2ZpbGVzPU5vbmUsX2RhdGE9Tm9uZSk6CiAgICBub0NsYXNzID0gamNsYXNzKCJydS50cmF2ZWxmb29kLnNpbXBsZV91aS5Ob1NRTCIpCiAgICBuY2wgPSBub0NsYXNzKCJ0ZXN0X25vc3FsIikKCiAgICBpZiBoYXNoTWFwLmdldCgibGlzdGVuZXIiKT09InNhdmVfYmlyZCI6CiAgICAgICAgaWYgaGFzaE1hcC5jb250YWluc0tleSgibmFtZV9iaXJkIikgYW5kIGhhc2hNYXAuY29udGFpbnNLZXkoImNvbG9yX2JpcmQiKToKCiAgICAgICAgICAgIG5hbWUsIGNvbG9yID0gaGFzaE1hcC5nZXQoIm5hbWVfYmlyZCIpLCBoYXNoTWFwLmdldCgiY29sb3JfYmlyZCIpCiAgICAgICAgICAgIGogPSB7CiAgICAgICAgICAgICAgICAibmFtZSI6IG5hbWUsCiAgICAgICAgICAgICAgICAiY29sb3IiOiBjb2xvcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGprZXlzID0gbmNsLmdldGFsbGtleXMoKQogICAgICAgICAgICBrZXlzID0ganNvbi5sb2Fkcyhqa2V5cykKICAgICAgICAgICAgaWQgPSAwCiAgICAgICAgICAgIGlmIGxlbihrZXlzKSA+IDA6CiAgICAgICAgICAgICAgICBpZCA9IG1heChbaW50KHgpIGZvciB4IGluIGtleXNdKSArIDEKCiAgICAgICAgICAgIG5jbC5wdXQoc3RyKGlkKSwganNvbi5kdW1wcyhqLGVuc3VyZV9hc2NpaT1GYWxzZSksIFRydWUpCgogICAgICAgICAgICBoYXNoTWFwLnB1dCgic2F2ZWRfYmlyZCIsIHN0cihpZCkrJyAnKyBuYW1lKycgJytjb2xvcikKICAgICAgICAgICAKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpPT0nT05fQkFDS19QUkVTU0VEJzogCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCLQnNC10L3RjiIpICAgIAogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIik9PSdkZWxfYWxsJzoKICAgICAgICBuY2wuZGVzdHJveSgpCiAgICAgICAgaGFzaE1hcC5wdXQoInNwZWFrIiwiQXR0ZW50aW9uISBBbGwgZGF0YSBoYXMgYmVlbiBkZXN0cm95ZWQhIikKICAgIHJldHVybiBoYXNoTWFwIAoKCmRlZiBsaXN0X29uX3N0YXJ0KGhhc2hNYXAsX2ZpbGVzPU5vbmUsX2RhdGE9Tm9uZSk6CiAgICBub0NsYXNzID0gamNsYXNzKCJydS50cmF2ZWxmb29kLnNpbXBsZV91aS5Ob1NRTCIpCiAgICBuY2wgPSBub0NsYXNzKCJ0ZXN0X25vc3FsIikKCiAgICBqID0geyAiY3VzdG9tY2FyZHMiOiAgICAgICAgIHsKICAgICAgICAgICAgCiAgICAgICAgICAgICJsYXlvdXQiOiB7CiAgICAgICAgICAgICJ0eXBlIjogIkxpbmVhckxheW91dCIsCiAgICAgICAgICAgICJvcmllbnRhdGlvbiI6ICJ2ZXJ0aWNhbCIsCiAgICAgICAgICAgICJoZWlnaHQiOiAibWF0Y2hfcGFyZW50IiwKICAgICAgICAgICAgIndpZHRoIjogIm1hdGNoX3BhcmVudCIsCiAgICAgICAgICAgICJ3ZWlnaHQiOiAiMCIsCiAgICAgICAgICAgICJFbGVtZW50cyI6IFsKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInR5cGUiOiAiTGluZWFyTGF5b3V0IiwKICAgICAgICAgICAgICAgICJvcmllbnRhdGlvbiI6ICJob3Jpem9udGFsIiwKICAgICAgICAgICAgICAgICJoZWlnaHQiOiAid3JhcF9jb250ZW50IiwKICAgICAgICAgICAgICAgICJ3aWR0aCI6ICJtYXRjaF9wYXJlbnQiLAogICAgICAgICAgICAgICAgIndlaWdodCI6ICIwIiwKICAgICAgICAgICAgICAgICJFbGVtZW50cyI6IFsKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJ0eXBlIjogIlBpY3R1cmUiLAogICAgICAgICAgICAgICAgInNob3dfYnlfY29uZGl0aW9uIjogIiIsCiAgICAgICAgICAgICAgICAiVmFsdWUiOiAiQHBpYzEiLAogICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICJtYXNrIjogIiIsCiAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIiwKICAgICAgICAgICAgICAgICJUZXh0U2l6ZSI6ICIxNiIsCiAgICAgICAgICAgICAgICAiVGV4dENvbG9yIjogIiNEQjcwOTMiLAogICAgICAgICAgICAgICAgIlRleHRCb2xkIjogVHJ1ZSwKICAgICAgICAgICAgICAgICJUZXh0SXRhbGljIjogRmFsc2UsCiAgICAgICAgICAgICAgICAiQmFja2dyb3VuZENvbG9yIjogIiIsCiAgICAgICAgICAgICAgICAid2lkdGgiOiAibWF0Y2hfcGFyZW50IiwKICAgICAgICAgICAgICAgICJoZWlnaHQiOiAid3JhcF9jb250ZW50IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAyCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgInR5cGUiOiAiTGluZWFyTGF5b3V0IiwKICAgICAgICAgICAgICAgICJvcmllbnRhdGlvbiI6ICJ2ZXJ0aWNhbCIsCiAgICAgICAgICAgICAgICAiaGVpZ2h0IjogIndyYXBfY29udGVudCIsCiAgICAgICAgICAgICAgICAid2lkdGgiOiAibWF0Y2hfcGFyZW50IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIsCiAgICAgICAgICAgICAgICAiRWxlbWVudHMiOiBbCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgInR5cGUiOiAiVGV4dFZpZXciLAogICAgICAgICAgICAgICAgICAgICJzaG93X2J5X2NvbmRpdGlvbiI6ICIiLAogICAgICAgICAgICAgICAgICAgICJWYWx1ZSI6ICJAc3RyaW5nMSIsCiAgICAgICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgICAgICJkb2N1bWVudF90eXBlIjogIiIsCiAgICAgICAgICAgICAgICAgICAgIm1hc2siOiAiIiwKICAgICAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIgogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAidHlwZSI6ICJUZXh0VmlldyIsCiAgICAgICAgICAgICAgICAgICAgInNob3dfYnlfY29uZGl0aW9uIjogIiIsCiAgICAgICAgICAgICAgICAgICAgIlZhbHVlIjogIkBzdHJpbmcyIiwKICAgICAgICAgICAgICAgICAgICAiTm9SZWZyZXNoIjogRmFsc2UsCiAgICAgICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICAgICAibWFzayI6ICIiLAogICAgICAgICAgICAgICAgICAgICJWYXJpYWJsZSI6ICIiCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJ0eXBlIjogIlRleHRWaWV3IiwKICAgICAgICAgICAgICAgICAgICAic2hvd19ieV9jb25kaXRpb24iOiAiIiwKICAgICAgICAgICAgICAgICAgICAiVmFsdWUiOiAiQHN0cmluZzMiLAogICAgICAgICAgICAgICAgICAgICJOb1JlZnJlc2giOiBGYWxzZSwKICAgICAgICAgICAgICAgICAgICAiZG9jdW1lbnRfdHlwZSI6ICIiLAogICAgICAgICAgICAgICAgICAgICJtYXNrIjogIiIsCiAgICAgICAgICAgICAgICAgICAgIlZhcmlhYmxlIjogIiIKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0KICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJUZXh0VmlldyIsCiAgICAgICAgICAgICAgICAic2hvd19ieV9jb25kaXRpb24iOiAiIiwKICAgICAgICAgICAgICAgICJWYWx1ZSI6ICJAdmFsIiwKICAgICAgICAgICAgICAgICJOb1JlZnJlc2giOiBGYWxzZSwKICAgICAgICAgICAgICAgICJkb2N1bWVudF90eXBlIjogIiIsCiAgICAgICAgICAgICAgICAibWFzayI6ICIiLAogICAgICAgICAgICAgICAgIlZhcmlhYmxlIjogIiIsCiAgICAgICAgICAgICAgICAiVGV4dFNpemUiOiAiMTYiLAogICAgICAgICAgICAgICAgIlRleHRDb2xvciI6ICIjREI3MDkzIiwKICAgICAgICAgICAgICAgICJUZXh0Qm9sZCI6IFRydWUsCiAgICAgICAgICAgICAgICAiVGV4dEl0YWxpYyI6IEZhbHNlLAogICAgICAgICAgICAgICAgIkJhY2tncm91bmRDb2xvciI6ICIiLAogICAgICAgICAgICAgICAgIndpZHRoIjogIm1hdGNoX3BhcmVudCIsCiAgICAgICAgICAgICAgICAiaGVpZ2h0IjogIndyYXBfY29udGVudCIsCiAgICAgICAgICAgICAgICAid2VpZ2h0IjogMgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAidHlwZSI6ICJUZXh0VmlldyIsCiAgICAgICAgICAgICAgICAic2hvd19ieV9jb25kaXRpb24iOiAiIiwKICAgICAgICAgICAgICAgICJWYWx1ZSI6ICJAZGVzY3IiLAogICAgICAgICAgICAgICAgIk5vUmVmcmVzaCI6IEZhbHNlLAogICAgICAgICAgICAgICAgImRvY3VtZW50X3R5cGUiOiAiIiwKICAgICAgICAgICAgICAgICJtYXNrIjogIiIsCiAgICAgICAgICAgICAgICAiVmFyaWFibGUiOiAiIiwKICAgICAgICAgICAgICAgICJUZXh0U2l6ZSI6ICItMSIsCiAgICAgICAgICAgICAgICAiVGV4dENvbG9yIjogIiM2RjkzOTMiLAogICAgICAgICAgICAgICAgIlRleHRCb2xkIjogRmFsc2UsCiAgICAgICAgICAgICAgICAiVGV4dEl0YWxpYyI6IFRydWUsCiAgICAgICAgICAgICAgICAiQmFja2dyb3VuZENvbG9yIjogIiIsCiAgICAgICAgICAgICAgICAid2lkdGgiOiAid3JhcF9jb250ZW50IiwKICAgICAgICAgICAgICAgICJoZWlnaHQiOiAid3JhcF9jb250ZW50IiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAwCiAgICAgICAgICAgIH0KICAgICAgICAgICAgXQogICAgICAgIH0KCiAgICB9CiAgICB9CgoKICAgIGtleXMgPSBuY2wuZ2V0YWxsa2V5cygpCiAgICAjaGFzaE1hcC5wdXQoInRvYXN0IixzdHIoa2V5cykpCiAgICAKICAgIGprZXlzID0ganNvbi5sb2FkcyhrZXlzKQogICAKICAgIGpbImN1c3RvbWNhcmRzIl1bImNhcmRzZGF0YSJdPVtdCiAgICAjaGFzaE1hcC5wdXQoInRvYXN0IiwganNvbi5sb2FkcyhuY2wuZ2V0KCcxJykpWyduYW1lJ10pCiAgICBmb3IgaSBpbiBqa2V5czoKICAgICAgICAjaGFzaE1hcC5wdXQoInRvYXN0IiwgJ2dheScpCgogICAgICAgICNoYXNoTWFwLnB1dCgidG9hc3QiLCBuY2wuZ2V0KGkpWzBdKQogICAgICAgIGJpcmQgPSBqc29uLmxvYWRzKG5jbC5nZXQoaSkpCiAgICAgICAgYyA9ICB7CiAgICAgICAgImtleSI6IGksCiAgICAgICAgImRlc2NyIjogIlBvcy4gIitpLAogICAgICAgICJ2YWwiOiAi0YDRg9CxLiIsCiAgICAgICAgInN0cmluZzEiOiBiaXJkWyduYW1lJ10sCiAgICAgICAgInN0cmluZzIiOiBiaXJkWydjb2xvciddLAogICAgICAgICJzdHJpbmczIjogIjQ4MDAg0JzQk9GGIgogICAgICAgIH0KICAgICAgICBqWyJjdXN0b21jYXJkcyJdWyJjYXJkc2RhdGEiXS5hcHBlbmQoYykKCiAgICBoYXNoTWFwLnB1dCgiY2FyZHMiLGpzb24uZHVtcHMoaixlbnN1cmVfYXNjaWk9RmFsc2UpLmVuY29kZSgndXRmOCcpLmRlY29kZSgpKQogICAgCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBsaXN0X29uX3RvdWNoKGhhc2hNYXAsX2ZpbGVzPU5vbmUsX2RhdGE9Tm9uZSk6CiAgICBpZiBoYXNoTWFwLmdldCgnc2VsZWN0ZWRfY2FyZF9rZXknKToKICAgICAgICAjaGFzaE1hcC5wdXQoInRvYXN0IiwicmVzPSIrc3RyKGhhc2hNYXAuZ2V0KCJzZWxlY3RlZF9jYXJkX2tleSIpKSkKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsICLQmtCw0YDRgtC+0YfQutCwINC/0YLQuNGG0YsiKQogICAgaWYgaGFzaE1hcC5nZXQoImxpc3RlbmVyIik9PSdPTl9CQUNLX1BSRVNTRUQnOiAKICAgICAgICBoYXNoTWFwLnB1dCgiU2hvd1NjcmVlbiIsItCc0LXQvdGOIikKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpPT0iY3JlYXRlX25ldyI6CiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCLQodC+0LfQtNCw0L3QuNC1INC90L7QstC+0Lkg0L/RgtC40YbRiyIpCiAgICByZXR1cm4gaGFzaE1hcAoKZGVmIGNhcmRfb25faW5wdXQoaGFzaE1hcCwgZmlsZXM9Tm9uZSwgZGF0YT1Ob25lKToKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpPT0nT05fQkFDS19QUkVTU0VEJzogCiAgICAgICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCLQodC/0LjRgdC+0Log0L/RgtC40YYiKQogICAgcmV0dXJuIGhhc2hNYXAKCmRlZiBjYXJkX29uX3N0YXJ0KGhhc2hNYXAsIGZpbGVzPU5vbmUsIGRhdGE9Tm9uZSk6CiAgICBub0NsYXNzID0gamNsYXNzKCJydS50cmF2ZWxmb29kLnNpbXBsZV91aS5Ob1NRTCIpCiAgICBuY2wgPSBub0NsYXNzKCJ0ZXN0X25vc3FsIikKICAgIGJpcmQgPSBqc29uLmxvYWRzKG5jbC5nZXQoaGFzaE1hcC5nZXQoInNlbGVjdGVkX2NhcmRfa2V5IikpKQogICAgaGFzaE1hcC5wdXQoImJpcmRfbmFtZSIsIGJpcmRbJ25hbWUnXSkKICAgIGhhc2hNYXAucHV0KCJiaXJkX2NvbG9yIiwgYmlyZFsnY29sb3InXSkKICAgIHJldHVybiBoYXNoTWFw",
+        "Launch": "Menu"
+    }
+}
