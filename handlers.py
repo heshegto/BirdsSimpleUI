@@ -2,10 +2,10 @@ import json
 from ru.travelfood.simple_ui import NoSQL as noClass
 from java import jclass
 
-#это для нативного тоста
 from android.widget import Toast
 from com.chaquo.python import Python
 
+# ------- Обработчики экрана Меню -------
 def menu_on_input(hashMap,_files=None,_data=None):
     if hashMap.get("listener")=="menu":
         if hashMap.get("menu")=="Список":
@@ -21,6 +21,8 @@ def menu_on_start(hashMap,_files=None,_data=None):
     #hashMap.put("toast","test1")    
     return hashMap
 
+
+# ------- Обработчкики экрана Создание новой птицы -------
 def create_on_start(hashMap,_files=None,_data=None):
     if not hashMap.containsKey("saved_bird"):
         hashMap.put("saved_bird","")
@@ -58,6 +60,29 @@ def create_on_input(hashMap,_files=None,_data=None):
     return hashMap 
 
 
+# ------- Обработчики экрана Карточка птицы -------
+def card_on_input(hashMap, files=None, data=None):
+    if hashMap.get("listener")=='ON_BACK_PRESSED': 
+        hashMap.put("ShowScreen","Список птиц")
+    return hashMap
+
+def card_on_start(hashMap, files=None, data=None):
+    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
+    ncl = noClass("test_nosql")
+    bird = json.loads(ncl.get(hashMap.get("selected_card_key")))
+
+    hashMap.put("bird_name", bird['name'])
+    hashMap.put("bird_color", bird['color'])
+    if 'foto' in bird.keys():
+        hashMap.put("image", bird['foto'])
+    else:
+        hashMap.put("image", "None")
+    if hashMap.get("listener") == 'btn_saw':
+        hashMap.put("StartProcess", "Птицы, которых я видел")
+    return hashMap
+
+
+# ------- Обработчики экрана Список птиц -------
 def list_on_start(hashMap,_files=None,_data=None):
     noClass = jclass("ru.travelfood.simple_ui.NoSQL")
     ncl = noClass("test_nosql")
@@ -149,16 +174,11 @@ def list_on_start(hashMap,_files=None,_data=None):
 
 
     keys = ncl.getallkeys()
-    #hashMap.put("toast",str(keys))
     
     jkeys = json.loads(keys)
    
     j["customcards"]["cardsdata"]=[]
-    #hashMap.put("toast", json.loads(ncl.get('1'))['name'])
     for i in jkeys:
-        #hashMap.put("toast", 'gay')
-
-        #hashMap.put("toast", ncl.get(i)[0])
         bird = json.loads(ncl.get(i))
         c =  {
         "key": i,
@@ -174,10 +194,8 @@ def list_on_start(hashMap,_files=None,_data=None):
     
     return hashMap
 
-
 def list_on_touch(hashMap,_files=None,_data=None):
     if hashMap.get('selected_card_key'):
-        #hashMap.put("toast","res="+str(hashMap.get("selected_card_key")))
         hashMap.put("ShowScreen", "Карточка птицы")
     if hashMap.get("listener")=='ON_BACK_PRESSED': 
         hashMap.put("ShowScreen","Меню")
@@ -185,19 +203,10 @@ def list_on_touch(hashMap,_files=None,_data=None):
         hashMap.put("ShowScreen","Создание новой птицы")
     return hashMap
 
-def card_on_input(hashMap, files=None, data=None):
-    if hashMap.get("listener")=='ON_BACK_PRESSED': 
-        hashMap.put("ShowScreen","Список птиц")
+
+# ------- Обработчики экрана Птицы, которых я видел -------
+def i_saw_on_input(hashMap, files=None, data=None):
     return hashMap
 
-def card_on_start(hashMap, files=None, data=None):
-    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
-    ncl = noClass("test_nosql")
-    bird = json.loads(ncl.get(hashMap.get("selected_card_key")))
-    hashMap.put("bird_name", bird['name'])
-    hashMap.put("bird_color", bird['color'])
-    if 'foto' in bird.keys():
-        hashMap.put("image", bird['foto'])
-    else:
-        hashMap.put("image", "None")
+def i_saw_on_input(hashMap, files=None, data=None):
     return hashMap
