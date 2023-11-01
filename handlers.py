@@ -120,34 +120,8 @@ def list_on_start(hashMap,_files=None,_data=None):
                     "mask": "",
                     "Variable": ""
                 },
-                {
-                    "type": "TextView",
-                    "show_by_condition": "",
-                    "Value": "@string3",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": "",
-                    "Variable": ""
-                }
                 ]
                 },
-                {
-                "type": "TextView",
-                "show_by_condition": "",
-                "Value": "@val",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "",
-                "TextSize": "16",
-                "TextColor": "#DB7093",
-                "TextBold": True,
-                "TextItalic": False,
-                "BackgroundColor": "",
-                "width": "match_parent",
-                "height": "wrap_content",
-                "weight": 2
-                }
                 ]
             },
             {
@@ -189,10 +163,8 @@ def list_on_start(hashMap,_files=None,_data=None):
         c =  {
         "key": i,
         "descr": "Pos. "+i,
-        "val": "руб.",
         "string1": bird['name'],
         "string2": bird['color'],
-        "string3": "4800 МГц",
         }
         if 'foto' in bird.keys():
             c["pic1"] = bird['foto']
@@ -224,4 +196,8 @@ def card_on_start(hashMap, files=None, data=None):
     bird = json.loads(ncl.get(hashMap.get("selected_card_key")))
     hashMap.put("bird_name", bird['name'])
     hashMap.put("bird_color", bird['color'])
+    if 'foto' in bird.keys():
+        hashMap.put("image", bird['foto'])
+    else:
+        hashMap.put("image", "None")
     return hashMap
