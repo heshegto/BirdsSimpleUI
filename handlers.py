@@ -38,6 +38,8 @@ def create_on_input(hashMap,_files=None,_data=None):
                 "name": name,
                 "color": color
             }
+            if hashMap.containsKey("foto"):
+                j["foto"] = hashMap.get("foto")
             jkeys = ncl.getallkeys()
             keys = json.loads(jkeys)
             id = 0
@@ -190,8 +192,10 @@ def list_on_start(hashMap,_files=None,_data=None):
         "val": "руб.",
         "string1": bird['name'],
         "string2": bird['color'],
-        "string3": "4800 МГц"
+        "string3": "4800 МГц",
         }
+        if 'foto' in bird.keys():
+            c["pic1"] = bird['foto']
         j["customcards"]["cardsdata"].append(c)
 
     hashMap.put("cards",json.dumps(j,ensure_ascii=False).encode('utf8').decode())

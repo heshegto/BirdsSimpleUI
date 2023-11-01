@@ -123,6 +123,16 @@
                                         "Variable": "del_all"
                                     }
                                 ]
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "foto",
+                                "type": "photo"
+                            },
+                            {
+                                "Value": "",
+                                "Variable": "foto",
+                                "type": "photoGallery"
                             }
                         ],
                         "Timer": false,
