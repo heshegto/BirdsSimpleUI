@@ -51,6 +51,7 @@ def create_on_input(hashMap,_files=None,_data=None):
             ncl.put(str(id), json.dumps(j,ensure_ascii=False), True)
 
             hashMap.put("saved_bird", str(id)+' '+ name+' '+color)
+            hashMap.put("toast", "successfully saved")
            
     if hashMap.get("listener")=='ON_BACK_PRESSED': 
         hashMap.put("ShowScreen","Меню")    
@@ -72,13 +73,16 @@ def card_on_start(hashMap, files=None, data=None):
         hashMap.put("image", bird['foto'])
     else:
         hashMap.put("image", "None")
-    if hashMap.get("listener") == 'btn_saw':
-        hashMap.put("StartProcess", "Птицы, которых я видел")
+    
     return hashMap
 
 def card_on_input(hashMap, files=None, data=None):
     if hashMap.get("listener")=='ON_BACK_PRESSED': 
         hashMap.put("ShowScreen","Список птиц")
+    if hashMap.get("listener") == 'btn_saw':
+        id = hashMap.get('selected_card_key')
+        hashMap.put("selected_card_id", id)
+        hashMap.put("StartProcess", "Птицы, которых я видел")
     return hashMap
 
 
@@ -306,16 +310,17 @@ def i_saw_on_start(hashMap, files=None, data=None):
             }
         }
     }
-
+    
     noClass = jclass("ru.travelfood.simple_ui.NoSQL")
-    ncl = noClass("list_of_views")
+    list_of_views = noClass("list_of_views")
 
-    keys = ncl.getallkeys()
+    keys = list_of_views.getallkeys()
     jkeys = json.loads(keys)
    
     j["customcards"]["cardsdata"]=[]
+
     for i in jkeys:
-        bird = json.loads(ncl.get(i))
+        bird = json.loads(list_of_views.get(i))
         c =  {
         "key": i,
         "descr": "Pos. "+i,
@@ -332,16 +337,21 @@ def i_saw_on_start(hashMap, files=None, data=None):
     return hashMap
 
 def i_saw_on_input(hashMap, files=None, data=None):
-    id = hashMap.get("selected_card_key")
-
-    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
-    ncl = noClass("test_nosql")
-    bird = json.loads(ncl.get(id))
-
-    count = noClass("count_views")
-    LOviews = noClass("list_of_views")
 
     if hashMap.get("listener")=="add_to_i_saw":
+            
+        id = hashMap.get("selected_card_id")
+
+        noClass = jclass("ru.travelfood.simple_ui.NoSQL")
+
+        ncl = noClass("test_nosql")
+        str_bird = ncl.get(id)
+        bird = json.loads(str_bird)
+
+        count = noClass("count_views")
+
+        list_of_views = noClass("list_of_views")
+        
         j = {
             "datetime": str(datetime.now()),
             "name": bird['name'],
@@ -352,20 +362,23 @@ def i_saw_on_input(hashMap, files=None, data=None):
         keys = count.getallkeys()
         jkeys = json.loads(keys)
         if  id in jkeys:
-            count.put(id, str(int(count[id]) + 1), True)
+            count.put(id, str(int(count.get(id)) + 1), True)
         else:
             count.put(id, '1', True)
 
         j["views"] = count.get(id)
 
 
-        keys = LOviews.getallkeys()
+        keys = list_of_views.getallkeys()
         jkeys = json.loads(keys)
-        id = 0
+        pk = 0
         if len(jkeys) > 0:
-            id = max([int(x) for x in jkeys]) + 1
+            pk = max([int(x) for x in jkeys]) + 1
 
-        LOviews.put(str(id), json.dumps(j,ensure_ascii=False), True)
+        list_of_views.put(str(pk), json.dumps(j,ensure_ascii=False), True)
+        hashMap.put('toast', list_of_views.get('1'))
+
+        hashMap.put("RefreshScreen","")
 
     if hashMap.get("listener")=='ON_BACK_PRESSED': 
         hashMap.put("ShowScreen","Меню")
