@@ -338,8 +338,8 @@
                                 "Variable": "",
                                 "type": "LinearLayout",
                                 "weight": "0",
-                                "height": "wrap_content",
-                                "width": "wrap_content",
+                                "height": "match_parent",
+                                "width": "match_parent",
                                 "orientation": "vertical",
                                 "Elements": [
                                     {
@@ -357,6 +357,14 @@
                                         "weight": "0",
                                         "Value": "+",
                                         "Variable": "add_to_i_saw"
+                                    },
+                                    {
+                                        "type": "CardsLayout",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "seen_birds"
                                     }
                                 ]
                             }
@@ -367,7 +375,9 @@
                         "handleKeyUp": false,
                         "hideBottomBarScreen": true,
                         "onlineOnStart": false,
-                        "onlineOnInput": false
+                        "onlineOnInput": false,
+                        "DefOnCreate": "i_saw_on_start",
+                        "DefOnInput": "i_saw_on_input"
                     }
                 ]
             }

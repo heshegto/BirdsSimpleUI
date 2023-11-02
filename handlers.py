@@ -84,113 +84,113 @@ def card_on_input(hashMap, files=None, data=None):
 
 # ------- Обработчики экрана Список птиц -------
 def list_on_start(hashMap,_files=None,_data=None):
-    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
-    ncl = noClass("test_nosql")
 
-    j = { "customcards":         {
-            
+    j = { 
+        "customcards": {
             "layout": {
-            "type": "LinearLayout",
-            "orientation": "vertical",
-            "height": "match_parent",
-            "width": "match_parent",
-            "weight": "0",
-            "Elements": [
-            {
                 "type": "LinearLayout",
-                "orientation": "horizontal",
-                "height": "wrap_content",
+                "orientation": "vertical",
+                "height": "match_parent",
                 "width": "match_parent",
                 "weight": "0",
                 "Elements": [
-                {
-                "type": "Picture",
-                "show_by_condition": "",
-                "Value": "@pic1",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "",
-                "TextSize": "16",
-                "TextColor": "#DB7093",
-                "TextBold": True,
-                "TextItalic": False,
-                "BackgroundColor": "",
-                "width": "match_parent",
-                "height": "wrap_content",
-                "weight": 2
-                },
-                {
-                "type": "LinearLayout",
-                "orientation": "vertical",
-                "height": "wrap_content",
-                "width": "match_parent",
-                "weight": "1",
-                "Elements": [
-                {
-                    "type": "TextView",
-                    "show_by_condition": "",
-                    "Value": "@string1",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": "",
-                    "Variable": ""
-                },
-                {
-                    "type": "TextView",
-                    "show_by_condition": "",
-                    "Value": "@string2",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": "",
-                    "Variable": ""
-                },
+                    {
+                        "type": "LinearLayout",
+                        "orientation": "horizontal",
+                        "height": "wrap_content",
+                        "width": "match_parent",
+                        "weight": "0",
+                        "Elements": [
+                            {
+                                "type": "Picture",
+                                "show_by_condition": "",
+                                "Value": "@picture",
+                                "NoRefresh": False,
+                                "document_type": "",
+                                "mask": "",
+                                "Variable": "",
+                                "TextSize": "16",
+                                "TextColor": "#DB7093",
+                                "TextBold": True,
+                                "TextItalic": False,
+                                "BackgroundColor": "",
+                                "width": "match_parent",
+                                "height": "wrap_content",
+                                "weight": 2
+                            },
+                            {
+                                "type": "LinearLayout",
+                                "orientation": "vertical",
+                                "height": "wrap_content",
+                                "width": "match_parent",
+                                "weight": "1",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "show_by_condition": "",
+                                        "Value": "@name",
+                                        "NoRefresh": False,
+                                        "document_type": "",
+                                        "mask": "",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "show_by_condition": "",
+                                        "Value": "@color",
+                                        "NoRefresh": False,
+                                        "document_type": "",
+                                        "mask": "",
+                                        "Variable": ""
+                                    },
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        "type": "TextView",
+                        "show_by_condition": "",
+                        "Value": "@pos",
+                        "NoRefresh": False,
+                        "document_type": "",
+                        "mask": "",
+                        "Variable": "",
+                        "TextSize": "-1",
+                        "TextColor": "#6F9393",
+                        "TextBold": False,
+                        "TextItalic": True,
+                        "BackgroundColor": "",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "weight": 0
+                    }
                 ]
-                },
-                ]
-            },
-            {
-                "type": "TextView",
-                "show_by_condition": "",
-                "Value": "@descr",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "",
-                "TextSize": "-1",
-                "TextColor": "#6F9393",
-                "TextBold": False,
-                "TextItalic": True,
-                "BackgroundColor": "",
-                "width": "wrap_content",
-                "height": "wrap_content",
-                "weight": 0
             }
-            ]
         }
-
-    }
     }
 
+    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
+    ncl = noClass("test_nosql")
 
-    keys = ncl.getallkeys()
-    jkeys = json.loads(keys)
+    keys = json.loads(ncl.getallkeys())
    
     j["customcards"]["cardsdata"]=[]
-    for i in jkeys:
+
+    for i in keys:
         bird = json.loads(ncl.get(i))
+
         c =  {
-        "key": i,
-        "descr": "Pos. "+i,
-        "string1": bird['name'],
-        "string2": bird['color'],
+            "key": i,
+            "pos": "Pos. "+i,
+            "name": bird['name'],
+            "color": bird['color'],
         }
         if 'foto' in bird.keys():
-            c["pic1"] = bird['foto']
+            c["picture"] = bird['foto']
+
         j["customcards"]["cardsdata"].append(c)
 
     hashMap.put("cards",json.dumps(j,ensure_ascii=False).encode('utf8').decode())
-    
     return hashMap
 
 def list_on_input(hashMap,_files=None,_data=None):
@@ -205,114 +205,112 @@ def list_on_input(hashMap,_files=None,_data=None):
 
 # ------- Обработчики экрана Птицы, которых я видел -------
 def i_saw_on_start(hashMap, files=None, data=None):
-    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
-    ncl = noClass("test_nosql")
-    i_saw = noClass("i_saw_birds")
 
-    j = { "customcards":         {
-            
+    j = {
+        "customcards": {
             "layout": {
-            "type": "LinearLayout",
-            "orientation": "vertical",
-            "height": "match_parent",
-            "width": "match_parent",
-            "weight": "0",
-            "Elements": [
-            {
                 "type": "LinearLayout",
-                "orientation": "horizontal",
-                "height": "wrap_content",
+                "orientation": "vertical",
+                "height": "match_parent",
                 "width": "match_parent",
                 "weight": "0",
                 "Elements": [
-                {
-                "type": "Picture",
-                "show_by_condition": "",
-                "Value": "@pic1",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "",
-                "TextSize": "16",
-                "TextColor": "#DB7093",
-                "TextBold": True,
-                "TextItalic": False,
-                "BackgroundColor": "",
-                "width": "match_parent",
-                "height": "wrap_content",
-                "weight": 2
-                },
-                {
-                "type": "LinearLayout",
-                "orientation": "vertical",
-                "height": "wrap_content",
-                "width": "match_parent",
-                "weight": "1",
-                "Elements": [
-                {
-                    "type": "TextView",
-                    "show_by_condition": "",
-                    "Value": "@string1",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": "",
-                    "Variable": ""
-                },
-                {
-                    "type": "TextView",
-                    "show_by_condition": "",
-                    "Value": "@string2",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": "",
-                    "Variable": ""
-                },
+                    {
+                        "type": "LinearLayout",
+                        "orientation": "horizontal",
+                        "height": "wrap_content",
+                        "width": "match_parent",
+                        "weight": "0",
+                        "Elements": [
+                            {
+                                "type": "Picture",
+                                "show_by_condition": "",
+                                "Value": "@picture",
+                                "NoRefresh": False,
+                                "document_type": "",
+                                "mask": "",
+                                "Variable": "",
+                                "TextSize": "16",
+                                "TextColor": "#DB7093",
+                                "TextBold": True,
+                                "TextItalic": False,
+                                "BackgroundColor": "",
+                                "width": "match_parent",
+                                "height": "wrap_content",
+                                "weight": 2
+                            },
+                            {
+                                "type": "LinearLayout",
+                                "orientation": "vertical",
+                                "height": "wrap_content",
+                                "width": "match_parent",
+                                "weight": "1",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "show_by_condition": "",
+                                        "Value": "@string1",
+                                        "NoRefresh": False,
+                                        "document_type": "",
+                                        "mask": "",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "show_by_condition": "",
+                                        "Value": "@string2",
+                                        "NoRefresh": False,
+                                        "document_type": "",
+                                        "mask": "",
+                                        "Variable": ""
+                                    },
+                                ]
+                            },
+                            {
+                                "type": "TextView",
+                                "show_by_condition": "",
+                                "Value": "@val",
+                                "NoRefresh": False,
+                                "document_type": "",
+                                "mask": "",
+                                "Variable": "",
+                                "TextSize": "16",
+                                "TextColor": "#DB7093",
+                                "TextBold": True,
+                                "TextItalic": False,
+                                "BackgroundColor": "",
+                                "width": "match_parent",
+                                "height": "wrap_content",
+                                "weight": 2
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TextView",
+                        "show_by_condition": "",
+                        "Value": "@descr",
+                        "NoRefresh": False,
+                        "document_type": "",
+                        "mask": "",
+                        "Variable": "",
+                        "TextSize": "-1",
+                        "TextColor": "#6F9393",
+                        "TextBold": False,
+                        "TextItalic": True,
+                        "BackgroundColor": "",
+                        "width": "wrap_content",
+                        "height": "wrap_content",
+                        "weight": 0
+                    }
                 ]
-                },
-                {
-                "type": "TextView",
-                "show_by_condition": "",
-                "Value": "@val",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "",
-                "TextSize": "16",
-                "TextColor": "#DB7093",
-                "TextBold": True,
-                "TextItalic": False,
-                "BackgroundColor": "",
-                "width": "match_parent",
-                "height": "wrap_content",
-                "weight": 2
-                }
-                ]
-            },
-            {
-                "type": "TextView",
-                "show_by_condition": "",
-                "Value": "@descr",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "",
-                "TextSize": "-1",
-                "TextColor": "#6F9393",
-                "TextBold": False,
-                "TextItalic": True,
-                "BackgroundColor": "",
-                "width": "wrap_content",
-                "height": "wrap_content",
-                "weight": 0
             }
-            ]
         }
-
-    }
     }
 
+    noClass = jclass("ru.travelfood.simple_ui.NoSQL")
+    ncl = noClass("list_of_views")
 
-    keys = i_saw.getallkeys()
+    keys = ncl.getallkeys()
     jkeys = json.loads(keys)
    
     j["customcards"]["cardsdata"]=[]
@@ -321,43 +319,54 @@ def i_saw_on_start(hashMap, files=None, data=None):
         c =  {
         "key": i,
         "descr": "Pos. "+i,
-        "string1": bird['name'],
-        "string2": bird['color'],
+        "string1": bird['datetime'],
+        "string2": bird['name'],
+        'val': bird['views']
         }
         if 'foto' in bird.keys():
-            c["pic1"] = bird['foto']
+            c["picture"] = bird['foto']
         j["customcards"]["cardsdata"].append(c)
 
-    hashMap.put("cards",json.dumps(j,ensure_ascii=False).encode('utf8').decode())
+    hashMap.put("seen_birds",json.dumps(j,ensure_ascii=False).encode('utf8').decode())
     
     return hashMap
 
 def i_saw_on_input(hashMap, files=None, data=None):
+    id = hashMap.get("selected_card_key")
+
     noClass = jclass("ru.travelfood.simple_ui.NoSQL")
     ncl = noClass("test_nosql")
-    bird = json.loads(ncl.get("selected_card_key"))
+    bird = json.loads(ncl.get(id))
+
+    count = noClass("count_views")
+    LOviews = noClass("list_of_views")
 
     if hashMap.get("listener")=="add_to_i_saw":
         j = {
             "datetime": str(datetime.now()),
             "name": bird['name'],
-            "image": bird['foto']
         }
-        if hashMap.containsKey("foto"):
-            j["foto"] = hashMap.get("foto")
-        jkeys = ncl.getallkeys()
-        keys = json.loads(jkeys)
+        if 'foto' in bird.keys():
+            j["foto"] = bird["foto"]
+
+        keys = count.getallkeys()
+        jkeys = json.loads(keys)
+        if  id in jkeys:
+            count.put(id, str(int(count[id]) + 1), True)
+        else:
+            count.put(id, '1', True)
+
+        j["views"] = count.get(id)
+
+
+        keys = LOviews.getallkeys()
+        jkeys = json.loads(keys)
         id = 0
-        if len(keys) > 0:
-            id = max([int(x) for x in keys]) + 1
+        if len(jkeys) > 0:
+            id = max([int(x) for x in jkeys]) + 1
 
-        ncl.put(str(id), json.dumps(j,ensure_ascii=False), True)
+        LOviews.put(str(id), json.dumps(j,ensure_ascii=False), True)
 
-        hashMap.put("saved_bird", str(id)+' '+ name+' '+color)
-           
     if hashMap.get("listener")=='ON_BACK_PRESSED': 
-        hashMap.put("ShowScreen","Меню")    
-    if hashMap.get("listener")=='del_all':
-        ncl.destroy()
-        hashMap.put("speak","Attention! All data has been destroyed!")
-    return hashMap 
+        hashMap.put("ShowScreen","Меню")
+    return hashMap
